@@ -3,7 +3,7 @@
   * Solution: Custom session schedule page launched from: Salesforce1 tab, Event card of Publisher action from the event record
 * I want to be able to easily raise an issue related to an event/session/speaker/attendee...
   * Solution: Standard Case publisher action
-  * Notification: tasks creation/chatter post...(*TBD*)
+  * Notification: tasks creation/chatter post...(**TBD**)
   * GPS coordinates?
 
 ###### Sponsors:
@@ -13,4 +13,4 @@
 
 ###### Event manager:
 * I want to have a report showing Capacity vs Actual vs Sign up
-* Other cool scenarios TBD @markoanic
+* Other cool scenarios **TBD** @markoanic
