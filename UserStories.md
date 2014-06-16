@@ -10,6 +10,7 @@
 * I want to record conversations with attendees and associate them with multiple topics
   * Solution: campaign and sub campaign, sub campaigns are conversation topics OR custom object called "event topic" linking an Account (sponsor) and an event
   * Who am I speaking to: search by name (or, more complex, QR code scanning)
+  * Session score tweet (@Eventflex #s5 #score_8)
 
 ###### Event manager:
 * I want to have a report showing Capacity vs Actual vs Sign up
