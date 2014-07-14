@@ -1,0 +1,11 @@
+<apex:page standardController="Event__c" extensions="EventTweetFeedController">
+<apex:form >
+     <apex:commandButton id="searchBtn"  value="Get Recent Tweets" action="{!search}"/>
+     <apex:commandButton id="createSocialPost"  value="Create Social Post"  action="{!createSocialPost}" />
+     <apex:outputPanel id="searchPanel" >
+     <c:SimpleTweetFeedComponent tweets="{!searchResponse.statuses}" id="twitterFeed"/>
+     
+     </apex:outputPanel>
+
+</apex:form>
+</apex:page>

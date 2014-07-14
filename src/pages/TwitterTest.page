@@ -1,0 +1,8 @@
+<apex:page controller="TwitterTestController">
+<apex:form >
+ <apex:pageBlock title="Twitter feed">
+    <apex:commandButton title="Get twitter feed" action="{!getTwitterFeed}" value="Get twitter feed"/>
+    <apex:messages />
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

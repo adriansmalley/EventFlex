@@ -1,0 +1,57 @@
+<apex:page showHeader="false" sidebar="false" docType="HTML-5.0" standardStylesheets="false" standardController="Event__c">
+	<apex:remoteObjects >
+ 		<apex:remoteObjectModel name="Event__c" jsShorthand="evt" fields="Name,Id,OwnerId,Short_description__c, Start_date_time__c, End_date_time__c,Status__c,Venue_text__c, Twitter_User__c"/>
+ 		<apex:remoteObjectModel name="Session__c" jsShorthand="session" fields="Name,Id,Location_text__c, Start_date_time__c,End_date_time__c,Event__c"/>
+	</apex:remoteObjects>
+	<apex:includeScript value="{!URLFOR($Resource.efLibs,'jquery/jquery-2.1.1.min.js')}" /> 
+	<apex:includeScript value="{!URLFOR($Resource.efLibs,'angular/angular.min.js')}" /> 
+	<apex:includeScript value="{!URLFOR($Resource.efLibs,'angular/angular-route.min.js')}" /> 
+	<apex:includeScript value="{!URLFOR($Resource.efLibs,'angular/angular-animate.min.js')}" /> 
+	<apex:includeScript value="{!URLFOR($Resource.efLibs,'bootstrap1/js/bootstrap.min.js')}" />
+	
+	<apex:includeScript value="{!URLFOR($Resource.efLibs,'angular-gantt/assets/angular-gantt.min.js')}" />
+
+	<apex:includeScript value="{!URLFOR($Resource.efApp)}" />
+	<apex:includeScript value="{!URLFOR($Resource.efMainCTRL)}" />
+	<apex:includeScript value="{!URLFOR($Resource.efSERVICES)}" />
+
+	<apex:stylesheet value="{!URLFOR($Resource.efLibs,'bootstrap1/css/bootstrap.min.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.efLibs,'angular-gantt/assets/gantt.css')}"/>
+	<style>
+		.slide {
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    width: 100%;
+		    height: 100%;
+		}
+		.slide.ng-enter,
+		.slide.ng-leave {
+		    -webkit-transition: all 0.2s ease;
+		    -moz-transition: all 0.2s ease;
+		    -o-transition: all 0.2s ease;
+		    transition: all 0.2s ease;
+		}
+		.slide.ng-enter {
+		    left: 100%;
+		}
+		.slide.ng-enter-active {
+		    left: 0;
+		}
+		.slide.ng-leave {
+		    left: 0;
+		}
+		.slide.ng-leave-active {
+		    left: -100%;
+		}
+	</style>
+	<div class="container" ng-app="eventflex">
+		<div ng-view="#" class="slide">
+			{{test}}
+			{{sessionId}}
+		</div>
+		<gantt template-url="{!URLFOR($Resource.efLibs,'angular-gantt/template/gantt.tmpl.html')}"></gantt>
+	</div>
+
+
+</apex:page>

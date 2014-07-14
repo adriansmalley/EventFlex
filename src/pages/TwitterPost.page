@@ -1,0 +1,14 @@
+<apex:page controller="TwitterPostController">
+    <apex:form > 
+        <apex:inputTextarea id="tweetInput" onkeyup="return maxLength();" onKeyPress="return maxLength();" value="{!newTweet}" rows="2" cols="73"/>
+        <apex:commandButton id="tweetBtn" style="height:35px;" value="Tweet" action="{!postTweet}" />
+        <apex:outputText value="{!result}"/><br/>       
+
+        <hr/>
+
+        <apex:inputText value="{!twitterSearch}"/>
+        <apex:commandButton id="searchBtn" style="height:35px;" value="Search" action="{!search}" rerender="twitterFeed"/>
+
+        <c:SimpleTweetFeedComponent tweets="{!searchResponse.statuses}" id="twitterFeed"/>
+    </apex:form>
+</apex:page>

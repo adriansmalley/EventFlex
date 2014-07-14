@@ -1,0 +1,12 @@
+<apex:page docType="html-5.0">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>VF Page in S1</h1>
+  <p>For basic page in S1 as a tab/app you need a VF page and then do the following:</p>
+  <ul>
+      <li>Set Page docType attrib to "html-5.0"</li>
+      <li>Checkbox setting in page: "Available for Salesforce mobile apps"</li>
+      <li>Create VF tab</li>
+      <li>Add the tab to setup in: Mobile Administration > Mobile Navigation</li>
+  </ul>
+  <p>Once the above is done, then refresh the S1 mobile app or point your browser to &lt;sfdomain&gt;/one/one.app</p>
+</apex:page>
