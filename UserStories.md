@@ -17,7 +17,7 @@
 * Other cool scenarios **TBD** @markoanic
 
 
-[ ] a bigger project
+- [ ] a bigger project
   - [ ] first subtask #10
   - [ ] follow up subtask #4321
   - [ ] final subtask cc @mention
