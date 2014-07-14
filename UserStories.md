@@ -15,3 +15,10 @@
 ###### Event manager:
 * I want to have a report showing Capacity vs Actual vs Sign up
 * Other cool scenarios **TBD** @markoanic
+
+
+[ ] a bigger project
+  - [ ] first subtask #10
+  - [ ] follow up subtask #4321
+  - [ ] final subtask cc @mention
+- [ ] a separate task
