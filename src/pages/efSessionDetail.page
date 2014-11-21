@@ -1,0 +1,63 @@
+<apex:page standardController="Session__c" showHeader="false" sidebar="false" standardStylesheets="false" docType="html-5.0" applyHtmlTag="false" applyBodyTag="false">
+	<apex:includeScript value="{!URLFOR($Resource.efLibs,'bootstrap1/js/bootstrap.min.js')}" />
+	<apex:stylesheet value="{!URLFOR($Resource.efLibs,'bootstrap1/css/bootstrap.min.css')}"/>
+
+	<div class="card context-c-chalkboard">
+	  <div class="card-heading">
+	    {!Session__c.Name}
+	  </div>
+	  <div class="card-detail">
+	  	<ul>
+		    <li>
+		      <label class="card-detail-label">{!$ObjectType.Session__c.fields.Start_date_time__c.label}</label>
+		      <span class="card-detail-value">{!Session__c.Start_date_time__c}</span>
+		    </li>
+		    <li>
+		      <label class="card-detail-label">{!$ObjectType.Session__c.fields.Location_text__c.label}</label>
+		      <span class="card-detail-value">{!Session__c.Location_text__c}</span>
+		    </li>
+	  	</ul>
+	  </div>
+	  <div class="card-detail">
+	  	<h4>Abstract:</h4>
+	  	{!Session__c.Description__c}
+	  </div>
+	</div>
+	<div class="card-list">
+	  <div class="card-list-heading">
+	    <h2>Speakers</h2>
+	  </div>
+	  <apex:repeat value="{!Session__c.Speaker_Slots__r}" var="speaks">
+		  <a href="#" class="card">
+		    <div class="card-heading">
+		      <span class="s1icon s1icon-s-avatar s1icon-m"></span>
+		      &nbsp;&nbsp;
+		      {!speaks.Speaker__r.Contact__r.Name}
+		    </div>
+		    <ul class="card-detail ">
+		      <li>{!speaks.Speaker__r.Contact__r.Twitter_User__c}</li>
+		      <li>{!speaks.Speaker__r.Biography__c}</li>
+		    </ul>
+
+		  </a> <!-- end card -->
+	  </apex:repeat>
+	</div> <!-- end card list -->	
+	<div class="card-list">
+	  <div class="card-list-heading context-feed">
+	    <h2>Recent Tweets</h2>
+	  </div>
+		  <a href="#" class="card">
+		    <div class="card-heading">
+		      <span class="s1icon s1icon-s-avatar s1icon-m"></span>
+		      &nbsp;&nbsp;
+		      Something
+		    </div>
+		    <ul class="card-detail ">
+		      <li>Something Else</li>
+		      <li>More Stuff</li>
+		    </ul>
+
+		  </a> <!-- end card -->
+	</div> <!-- end card list -->	
+
+</apex:page>

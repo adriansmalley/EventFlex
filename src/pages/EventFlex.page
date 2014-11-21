@@ -1,56 +1,62 @@
-<apex:page showHeader="false" sidebar="false" docType="HTML-5.0" standardStylesheets="false" standardController="Event__c">
+<apex:page showHeader="false" sidebar="false" docType="HTML-5.0" standardStylesheets="false" controller="EventFlexServices">
 	<apex:remoteObjects >
- 		<apex:remoteObjectModel name="Event__c" jsShorthand="evt" fields="Name,Id,OwnerId,Short_description__c, Start_date_time__c, End_date_time__c,Status__c,Venue_text__c, Twitter_User__c"/>
- 		<apex:remoteObjectModel name="Session__c" jsShorthand="session" fields="Name,Id,Location_text__c, Start_date_time__c,End_date_time__c,Event__c"/>
+ 		<apex:remoteObjectModel name="Event__c" jsShorthand="evt" fields="Name,Id,OwnerId,Short_description__c,Start_date_time__c,End_date_time__c,Status__c,Venue_text__c,Twitter_User__c"/>
+ 		<apex:remoteObjectModel name="Session__c" jsShorthand="session" fields="Name,Id,Location_text__c,Short_description__c,Description__c,Social_Posts__c,Start_date_time__c,End_date_time__c,Event__c,Confirmed_Attendees__c,Maximum_Volume__c"/>
+ 		<apex:remoteObjectModel name="Social_Post__c" jsShorthand="socialpost" fields="Id,Name,Type__c,Post_text__c,Social_User__c,Event__c,Session__c,Sentiment_Score__c"/>
+ 		<apex:remoteObjectModel name="Speaker__c" jsShorthand="speaker" fields="Id,Name,Contact__c,Speaker_Name__c,Status__c,Event__c,Biography__c"/>
 	</apex:remoteObjects>
 	<apex:includeScript value="{!URLFOR($Resource.efLibs,'jquery/jquery-2.1.1.min.js')}" /> 
 	<apex:includeScript value="{!URLFOR($Resource.efLibs,'angular/angular.min.js')}" /> 
 	<apex:includeScript value="{!URLFOR($Resource.efLibs,'angular/angular-route.min.js')}" /> 
 	<apex:includeScript value="{!URLFOR($Resource.efLibs,'angular/angular-animate.min.js')}" /> 
 	<apex:includeScript value="{!URLFOR($Resource.efLibs,'bootstrap1/js/bootstrap.min.js')}" />
+
+	 <apex:includeScript value="{!URLFOR($Resource.AngularD3, 'd3-master/d3.min.js')}"/>
+	 <apex:includeScript value="{!URLFOR($Resource.AngularChartsJS)}" />
 	
+
+	<script>
+		var staticItems = {
+			'ganttTemplate' : "{!URLFOR($Resource.efLibs,'angular-gantt/template/gantt.tmpl.html')}",
+			'efMainHTML' : "{!URLFOR($Resource.efMainHTML)}",
+			'efAnalyticsHTML' : "{!URLFOR($Resource.efAnalyticsHTML)}",
+			'efSessionHTML' : "{!URLFOR($Resource.efSessionHTML)}",
+			'efProfileHTML' : "{!URLFOR($Resource.efProfileHTML)}",
+			'efModalTemplateHTML' : "{!URLFOR($Resource.efModalTemplateHTML)}",
+			'efSessionModalHTML' : "{!URLFOR($Resource.efSessionModalHTML)}",
+			'getSessionTopics':'{!$RemoteAction.EventFlexServices.getSessionTopics}',
+			'getSessionSpeakers' : '{!$RemoteAction.EventFlexServices.getSessionSpeakers}',
+			'getMyFriendsAttendance' : '{!$RemoteAction.EventFlexServices.getMyFriendsAttendance}',
+			'getDashboardForEvent' : '{!$RemoteAction.EventFlexServices.getDashboardForEvent}'
+	};
+
+	
+	</script>
+
 	<apex:includeScript value="{!URLFOR($Resource.efLibs,'angular-gantt/assets/angular-gantt.min.js')}" />
+	
 
 	<apex:includeScript value="{!URLFOR($Resource.efApp)}" />
 	<apex:includeScript value="{!URLFOR($Resource.efMainCTRL)}" />
 	<apex:includeScript value="{!URLFOR($Resource.efSERVICES)}" />
+	<apex:includeScript value="{!URLFOR($Resource.efDirectives)}" />
+	
 
 	<apex:stylesheet value="{!URLFOR($Resource.efLibs,'bootstrap1/css/bootstrap.min.css')}"/>
 	<apex:stylesheet value="{!URLFOR($Resource.efLibs,'angular-gantt/assets/gantt.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.efCSS)}"/>
+
+	 <apex:stylesheet value="{!URLFOR($Resource.AngularCharts, 'styles.css')}" />
+
+	
+
 	<style>
-		.slide {
-		    position: absolute;
-		    left: 0;
-		    top: 0;
-		    width: 100%;
-		    height: 100%;
-		}
-		.slide.ng-enter,
-		.slide.ng-leave {
-		    -webkit-transition: all 0.2s ease;
-		    -moz-transition: all 0.2s ease;
-		    -o-transition: all 0.2s ease;
-		    transition: all 0.2s ease;
-		}
-		.slide.ng-enter {
-		    left: 100%;
-		}
-		.slide.ng-enter-active {
-		    left: 0;
-		}
-		.slide.ng-leave {
-		    left: 0;
-		}
-		.slide.ng-leave-active {
-		    left: -100%;
-		}
+		
 	</style>
-	<div class="container" ng-app="eventflex">
-		<div ng-view="#" class="slide">
-			{{test}}
-			{{sessionId}}
-		</div>
-		<gantt template-url="{!URLFOR($Resource.efLibs,'angular-gantt/template/gantt.tmpl.html')}"></gantt>
+
+	<div class="container-fluid" ng-app="eventflex">
+		<div ng-view="#" class="slide container"></div>
+		
 	</div>
 
 

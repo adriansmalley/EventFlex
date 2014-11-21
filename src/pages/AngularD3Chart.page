@@ -1,0 +1,45 @@
+<apex:page contentType="text/html" controller="efCharts" >
+    <meta http-equiv="content-type" content="text/html; charset=UTF8" />
+    
+    <apex:includeScript value="{!URLFOR($Resource.AngularD3, 'd3-master/d3.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.efLibs,'jquery/jquery-2.1.1.min.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.efLibs,'angular/angular.min.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.efLibs,'angular/angular-route.min.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.efLibs,'angular/angular-animate.min.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.efLibs,'bootstrap1/js/bootstrap.min.js')}" />
+    
+    
+    <apex:includeScript value="{!URLFOR($Resource.AngularChartsJS)}" />
+    
+   
+    <apex:stylesheet value="{!URLFOR($Resource.AngularCharts, 'styles.css')}" />
+    
+    <style>
+        .chart {
+         width: 500px;
+         height: 500px;
+        }
+    </style>
+
+    <script>
+        var staticItems = {
+            'getDashboardForEvent' : '{!$RemoteAction.efCharts.getDashboardForEvent}'
+        };
+    </script>
+     <apex:includeScript value="{!$Resource.AngularD3ChartCTRL}" />
+    
+    
+    <div ng-app="d3App" > 
+        <div ng-controller="d3CTRL">
+        <div 
+            data-ac-chart="'pie'" 
+            data-ac-data="data" 
+            data-ac-config="config" 
+            class="chart">
+          </div>
+
+        </div>
+
+    </div>
+    
+</apex:page>
